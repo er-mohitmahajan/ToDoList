@@ -1,0 +1,236 @@
+body{
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(to right, #6a11cb, #2575fc);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.todo-container{
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#new-task{
+    padding: 10px;
+    border: 1px solid #a6a6a6;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #000000;
+    color: #ffffff;
+    outline: none; /* Remove default outline */
+}
+
+/* This targets the input field exactly when clicked or focused */
+#new-task:focus {
+  outline: 2px solid #007bff; /* Adjust thickness and hex code as needed */
+  caret-color: #007bff;
+  border:0px solid #a6a6a6; /* Optional: Change border color on focus */
+}
+#buttons {
+    display: flex;
+    gap: 10px
+}
+#add-task{
+    padding: 10px;
+    background-color: #007bff;
+    color: #000000;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+#add-task:hover{
+    background-color: #015bd1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+#add-task:active{
+    transform: scale(0.98);
+    box-shadow: 0 0 10px 5px rgba(0, 123, 255, 0.6);
+    background-color: #000000;
+    color: #007bff;
+}
+#del-Comptask {
+    padding: 7px;
+    border-radius: 10px;
+    background-color: #e44c3c;
+    color: #ffffff;
+    cursor: pointer;
+    border: none;
+    font-size: 10px;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#del-Comptask:hover{
+    background-color: #d14a01;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+#del-Comptask:active{
+    transform: scale(0.98);
+    box-shadow: 0 0 10px 5px rgba(255, 51, 0, 0.6);
+    background-color: #000000;
+    color: #e44c3c;
+}
+.delete-task{
+    padding: 5px 8px;
+    background-color: #e74c3c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+}   
+.edit-task{
+    padding: 5px 8px;
+    background-color: #0bd232;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+}   
+.task-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.task-checkbox {
+    margin-right: 8px; /* Force a consistent space after the checkbox */
+}
+/* Update your CSS to target the inner div wrapping the checkbox and text */
+.task-item > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* 👈 This forces a clean, identical 8px gap on both HTML and JS elements! */
+}
+.task-actions {
+    display: flex;
+    gap: 8px; /* Space between the Edit and Delete buttons */
+}
+.task-text {
+    flex-grow: 1; /* Allow the text to take up available space */
+    word-break: break-word; /* Ensure long words break to the next line */
+    outline: none; /* Remove default outline */
+    color: #ffffff; /* Set text color to white */
+}
+#toast-message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: none; /* Hide it initially */
+}
+.filterbutton {
+    padding: 5px 9px;
+    background-color: #4183f5;
+    border-color: #2575fc;
+    border-style: solid;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.filterbutton:hover{
+    background-color: #2575fc;
+    border-color: #085beb;
+    transform: translateY(-1px);
+}
+.filterbutton:active{
+    background-color: #0453da;
+    transform: scale(0.99);
+}
+.filterButtonContainer {
+    display: none;
+    gap: 5px;
+}
+div:has(>.filterbutton){
+    display: flex;
+    margin-top: 10px;
+    justify-content: end;
+    width: 100%;
+}
+#countandfilter {
+    display: flex;
+    flex-direction: row;
+}
+.countTextContainer {
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    align-content: start;
+    justify-content: start;
+    gap: 10px;
+}
+.countText {
+    color: #e44c3c;
+    font-size: 10px;
+    align-content: center;
+    padding: 2px 7px;
+    margin-top: 10px;
+    height: auto;
+    border-radius: 10px;
+    border-color: #e44c3c;
+    box-shadow: 0 0 5px 2px rgba(255, 94, 0, 0.5);;
+}
+#searchContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    gap: 10px;
+    justify-content: center;
+}
+#searchBar {
+    padding: 5px 9px;
+    border-radius: 10px;
+    background-color: transparent;
+    border: none;
+    width: 76%;
+    outline: none;
+    border: 1px solid #a6a6a6;
+    color: #007bff;
+}
+#searchButton {
+    padding: 5px 9px;
+    border-radius: 10px;
+    background-color: #007bff;
+    border: none;
+}
+#searchButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    background-color: #0452a4;
+}
+
+#searchButton:active{
+    transform: scale(0.98);
+}
+
+.highlight {
+    color: red;
+}
